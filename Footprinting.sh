@@ -60,32 +60,5 @@ fi
 echo
 echo "Footprinting complete."
 
-#!/bin/bash
-# Nmap scan script
-echo "[+] Starting website scan on $1"
-nmap -sV -O --script=http-enum $1 > nmap_results.txt
-echo "[+] Scan complete. Results saved to nmap_results.txt
 
-#!/bin/bash
-echo "[+] Cloning Zphisher..."
-git clone https://github.com/htr-tech/zphisher.git
-cd zphisher
-bash zphisher.sh
-
-rule Phishing_Email
-{
-    strings:
-        $a = "verify your email" nocase
-        $b = "account suspended" nocase
-        $c = "click below to login" nocase
-    condition:
-        2 of ($a, $b, $c)
-}
-
-Command to perform brute-force attack on HTTP login forms.
-hydra -L users.txt -P passwords.txt http-post-form "/login.php:username=^USER^&password=^PASS^:Invalid" -V
-
-sudo snort -A console -c /etc/snort/snort.conf -i eth0
-Add a custom rule in /etc/snort/rules/local.rules:
-alert tcp any any -> any 25 (msg:"Suspicious Email Activity Detected"; content:"login"; sid:1000001;)
 
