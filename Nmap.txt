@@ -1,6 +1,0 @@
-#!/bin/bash
-# Nmap scan script
-echo "[+] Starting website scan on $1"
-nmap -sV -O --script=http-enum $1 > nmap_results.txt
-echo "[+] Scan complete. Results saved to nmap_results.txt
-
